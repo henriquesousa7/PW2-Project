@@ -39,7 +39,7 @@
                             <label for="marcas">Marca</label>
                             <select name="marcas" id="marcas">
                                 <?php foreach($allMarcas as $marca): ?>
-                                    <option value="<?= $marca ?>"><?= $marca ?></option>
+                                    <option value="<?= $marca["id"] ?>"><?= $marca["nome"] ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>

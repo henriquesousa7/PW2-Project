@@ -1,7 +1,5 @@
 <?php
 
-require "Classes/Conexao.php";
-
 class Carro {
 
     private $id;
@@ -62,7 +60,17 @@ class Carro {
 
     
     private function openConexao(){
-        $this->conn = new Conexao();
+        $host = "localhost";
+        $database = "carros_projetopw";
+        $user = "admin";
+        $password = "admin";
+        
+        $this->conn = mysqli_connect($host, $user, $password, $database);
+        $this->conn->set_charset("utf8");
+    
+        if(mysqli_connect_errno()){
+            echo "Erro na conexao com o banco de dados";
+        }
     }
 
     function __destruct(){

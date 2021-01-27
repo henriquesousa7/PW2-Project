@@ -1,7 +1,5 @@
 <?php
 
-require "Classes/Conexao.php";
-
 class Marca {
 
     private $id;
@@ -56,19 +54,29 @@ class Marca {
         $sql = "SELECT * FROM marca";        
 
         // Executa a query           
-        $resultado = mysqli_query($this->con, $sql);
+        $resultado = mysqli_query($this->conn, $sql);
         
         // Armazena os dados em um array
-        $produtos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+        $marcas = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 
         // Libera o $resultado da memória
         mysqli_free_result($resultado);
 
-        return $produtos;
+        return $marcas;
     }
 
     private function openConexao(){
-        $this->conn = new Conexao();
+        $host = "localhost";
+        $database = "carros_projetopw";
+        $user = "admin";
+        $password = "admin";
+        
+        $this->conn = mysqli_connect($host, $user, $password, $database);
+        $this->conn->set_charset("utf8");
+    
+        if(mysqli_connect_errno()){
+            echo "Erro na conexao com o banco de dados";
+        }
     }
 
     function __destruct(){
