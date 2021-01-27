@@ -1,10 +1,12 @@
 <?php
 
+require "Classes/Conexao.php";
+
 class Carro {
 
     private $id;
+    private $modelo;
     private $valor;
-    private $qtdPortas;
     private $cor;
     private $marca;
     private $conn;
@@ -34,12 +36,12 @@ class Carro {
         return $this->valor;
     }
 
-    public function setQtdPortas($qtdPortas) {
-        $this->qtdPortas = $qtdPortas;
+    public function setModelo($modelo) {
+        $this->modelo = $modelo;
     }
 
-    public function getQrdPortas() {
-        return $this->qtdPortas;
+    public function getModelo() {
+        return $this->modelo;
     }
 
     public function setCor($cor) {

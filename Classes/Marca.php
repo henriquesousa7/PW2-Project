@@ -1,9 +1,11 @@
 <?php
+
 require "Classes/Conexao.php";
 
 class Marca {
 
     private $id;
+    private $nome;
     private $paisOrigem;
     private $valorMercado;
     private $conn;
@@ -25,6 +27,14 @@ class Marca {
         return $this->id;
     }
 
+    public function setNome($nome) {
+        $this->nome = $nome;
+    }
+
+    public function getNome() {
+        return $this->nome;
+    }
+
     public function setPaisOrigem($paisOrigem) {
         $this->paisOrigem = $paisOrigem;
     }
@@ -39,6 +49,22 @@ class Marca {
 
     public function getValorMercado() {
         return $this->valorMercado;
+    }
+
+    public function selectAll(){
+        // Prepara o comando SQL
+        $sql = "SELECT * FROM marca";        
+
+        // Executa a query           
+        $resultado = mysqli_query($this->con, $sql);
+        
+        // Armazena os dados em um array
+        $produtos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+
+        // Libera o $resultado da memória
+        mysqli_free_result($resultado);
+
+        return $produtos;
     }
 
     private function openConexao(){
