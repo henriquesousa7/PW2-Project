@@ -13,11 +13,19 @@
 
 		<br>
 		<a href="carros.php" class="button">
-			<button type="button" class="btn btn-dark btn-lg btn-block">Carros</button>
+			<button type="button" class="btn btn-dark btn-lg btn-block">Adicionar Carros</button>
 		</a>
 		<br>
 		<a href="marcas.php" class="button">
-			<button type="button" class="btn btn-dark btn-lg btn-block">Marcas</button>
+			<button type="button" class="btn btn-dark btn-lg btn-block">Adicionar Marcas</button>
+		</a>
+		<br>
+		<a href="viewCarros.php" class="button">
+			<button type="button" class="btn btn-dark btn-lg btn-block">Listar Carros</button>
+		</a>
+		<br>
+		<a href="viewMarcas.php" class="button">
+			<button type="button" class="btn btn-dark btn-lg btn-block">Listar Marcas</button>
 		</a>
 	</div>
 

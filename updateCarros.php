@@ -1,12 +1,13 @@
 <?php
     require 'Classes/Marca.php'; 
     require 'Classes/Carro.php'; 
-    
-    $marca = new Marca();
-    $carro = new Carro();
 
+    $marca = new Marca();
+    $carroClass = new Carro();
+    
     $allMarcas = $marca->selectAll();
-    $allCarros = $carro->selectAll();
+    $carroClass->setId($_GET["id"]);
+    $carro = $carroClass->selectById();
 ?>
 
 <!DOCTYPE html>
@@ -31,15 +32,15 @@
                     <form class="form" action="" method="post">
                         <div class="form-group">
                         	<label for="modelo">Modelo</label>
-               				<input type="text" class="form-control" id="modelo" name="modelo" placeholder="Modelo" required>
+               				<input type="text" class="form-control" id="modelo" name="modelo" placeholder="Modelo" value="<?= $carro[0]["modelo"] ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="valor">Valor</label>
-                			<input type="number" class="form-control" id="valor" name="valor" placeholder="Valor" required>
+                			<input type="number" class="form-control" id="valor" name="valor" placeholder="Valor" value="<?= $carro[0]["valor"] ?>" required>
                         </div>
                         <div class="form-group">
                          	<label for="cor">Cor</label>
-                			<input type="text" class="form-control" id="cor" name="cor" placeholder="cor" required>
+                			<input type="text" class="form-control" id="cor" name="cor" placeholder="cor" value="<?= $carro[0]["cor"] ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="marcas">Marca</label>
@@ -50,7 +51,7 @@
                             </select>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-dark" name="insertButton">Enviar</button>
+                            <button type="submit" class="btn btn-dark" name="updateButton">Enviar</button>
                         </div>
                         </form>
                     </div>
@@ -64,12 +65,14 @@
 
     $carro1 = new Carro();
     
-    if(isset($_POST['insertButton'])){
+    if(isset($_POST['updateButton'])){
+        $carro1->setId($_GET["id"]);
         $carro1->setModelo($_POST["modelo"]);
         $carro1->setValor($_POST["valor"]);
         $carro1->setCor($_POST["cor"]);
         $carro1->setMarca($_POST["marcas"]);
 
-        $carro1->insertCarro();
+        $carro1->updateCarro();
+        header("Location: index.php");
     }
 ?>

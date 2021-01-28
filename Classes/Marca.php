@@ -49,6 +49,20 @@ class Marca {
         return $this->valorMercado;
     }
 
+    public function insertMarca(){ 
+        
+        // Prepara o comando SQL
+        $sql = "INSERT INTO marca (nome, paisOrigem, valorMercado) 
+                VALUES('{$this->nome}',
+                       '{$this->paisOrigem}',
+                       '{$this->valorMercado}')";
+
+        // Executa o comando SQL
+        if(!mysqli_query($this->conn, $sql)){
+            echo "Ocorreu um erro: " . mysqli_error($this->conn) . "<br>";
+        }
+    }
+
     public function selectAll(){
         // Prepara o comando SQL
         $sql = "SELECT * FROM marca";        
@@ -63,6 +77,22 @@ class Marca {
         mysqli_free_result($resultado);
 
         return $marcas;
+    }
+
+    public function selectById(){
+        // Prepara o comando SQL
+        $sql = "SELECT * FROM marca Where id = $this->id";        
+
+        // Executa a query           
+        $resultado = mysqli_query($this->conn, $sql);
+        
+        // Armazena os dados em um array
+        $marca = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+
+        // Libera o $resultado da memória
+        mysqli_free_result($resultado);
+
+        return $marca;
     }
 
     private function openConexao(){

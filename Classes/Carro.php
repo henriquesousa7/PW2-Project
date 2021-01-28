@@ -58,6 +58,81 @@ class Carro {
         return $this->marca;
     }
 
+    public function insertCarro(){ 
+        
+        // Prepara o comando SQL
+        $sql = "INSERT INTO carro (modelo, valor, cor, marca) 
+                VALUES('{$this->modelo}',
+                       '{$this->valor}',
+                       '{$this->cor}',
+                       '{$this->marca}')";
+
+        // Executa o comando SQL
+        if(!mysqli_query($this->conn, $sql)){
+            echo "Ocorreu um erro: " . mysqli_error($this->conn) . "<br>";
+        }
+    }
+
+    public function selectAll(){
+        // Prepara o comando SQL
+        $sql = "SELECT * FROM carro";        
+
+        // Executa a query           
+        $resultado = mysqli_query($this->conn, $sql);
+        
+        // Armazena os dados em um array
+        $carros = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+
+        // Libera o $resultado da memória
+        mysqli_free_result($resultado);
+
+        return $carros;
+    }
+
+    public function selectById(){
+        // Prepara o comando SQL
+        $sql = "SELECT * FROM carro Where id = $this->id";        
+
+        // Executa a query           
+        $resultado = mysqli_query($this->conn, $sql);
+        
+        // Armazena os dados em um array
+        $carro = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+
+        // Libera o $resultado da memória
+        mysqli_free_result($resultado);
+
+        return $carro;
+    }
+
+    public function deleteCarro(){ 
+        
+        // Prepara o comando SQL
+        $sql = "DELETE FROM carro WHERE id = '{$this->id}'";
+
+        // Executa o comando SQL
+        if(!mysqli_query($this->conn, $sql)){
+            echo "Ocorreu um erro: " . mysqli_error($this->conn) . "<br>";
+        }
+    }
+
+    public function updateCarro(){ 
+        
+        // Prepara o comando SQL
+        $sql = "UPDATE carro 
+                SET modelo = '{$this->modelo}', 
+                valor = '{$this->valor},'
+                cor = '{$this->cor},'
+                marca = '{$this->marca}' 
+                WHERE id = '{$this->id}'" ;
+
+
+        // Executa o comando SQL
+        if(!mysqli_query($this->conn, $sql)){
+            echo "Ocorreu um erro: " . mysqli_error($this->conn) . "<br>";
+        }
+    }
+
     
     private function openConexao(){
         $host = "localhost";
