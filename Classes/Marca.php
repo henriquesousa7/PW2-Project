@@ -95,6 +95,33 @@ class Marca {
         return $marca;
     }
 
+    public function deleteMarca(){ 
+        
+        // Prepara o comando SQL
+        $sql = "DELETE FROM marca WHERE id = '{$this->id}'";
+
+        // Executa o comando SQL
+        if(!mysqli_query($this->conn, $sql)){
+            echo "Ocorreu um erro: " . mysqli_error($this->conn) . "<br>";
+        }
+    }
+
+    public function updateMarca(){ 
+        
+        // Prepara o comando SQL
+        $sql = "UPDATE marca 
+                SET nome = '{$this->nome}', 
+                paisOrigem = '{$this->paisOrigem}',
+                valorMercado = '{$this->valorMercado}'
+                WHERE id = '{$this->id}'" ;
+
+
+        // Executa o comando SQL
+        if(!mysqli_query($this->conn, $sql)){
+            echo "Ocorreu um erro: " . mysqli_error($this->conn) . "<br>";
+        }
+    }
+
     private function openConexao(){
         $host = "localhost";
         $database = "carros_projetopw";

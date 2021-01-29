@@ -40,7 +40,7 @@
                         </div>
                         <div class="form-group">
                          	<label for="cor">Cor</label>
-                			<input type="text" class="form-control" id="cor" name="cor" placeholder="cor" value="<?= $carro[0]["cor"] ?>" required>
+                			<input type="text" class="form-control" id="cor" name="cor" placeholder="Cor" value="<?= $carro[0]["cor"] ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="marcas">Marca</label>

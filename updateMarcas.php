@@ -1,5 +1,11 @@
 <?php
     require 'Classes/Marca.php'; 
+
+    $marcaClass = new Marca();
+
+    $marcaClass->setId($_GET["id"]);
+    $marca = $marcaClass->selectById();
+
 ?>
 
 <!DOCTYPE html>
@@ -24,18 +30,18 @@
                     <form class="form" action="" method="post">
                         <div class="form-group">
                         	<label for="nome">Nome</label>
-               				<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required>
+               				<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value="<?php echo $marca[0]["nome"] ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="paisOrigem">País de Origem</label>
-                			<input type="text" class="form-control" id="paisOrigem" name="paisOrigem" placeholder="País de Origem" required>
+                			<input type="text" class="form-control" id="paisOrigem" name="paisOrigem" placeholder="País de Origem" value="<?php echo $marca[0]["paisOrigem"] ?>" required>
                         </div>
                         <div class="form-group">
                          	<label for="valorMercado">Valor de Mercado</label>
-                			<input type="number" class="form-control" id="valorMercado" name="valorMercado" placeholder="Valor de Mercado" required>
+                			<input type="number" class="form-control" id="valorMercado" name="valorMercado" placeholder="Valor de Mercado" value="<?php echo $marca[0]["valorMercado"] ?>" required>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-dark" name="insertButton">Enviar</button>
+                            <button type="submit" class="btn btn-dark" name="updateButton">Enviar</button>
                         </div>
                         </form>
                     </div>
@@ -47,13 +53,15 @@
 
 <?php
 
-    $marca = new Marca();
+    $marca1 = new Marca();
     
-    if(isset($_POST['insertButton'])){
-        $marca->setNome($_POST["nome"]);
-        $marca->setPaisOrigem($_POST["paisOrigem"]);
-        $marca->setValorMercado($_POST["valorMercado"]);
+    if(isset($_POST['updateButton'])){
+        $marca1->setId($_GET["id"]);
+        $marca1->setNome($_POST["nome"]);
+        $marca1->setPaisOrigem($_POST["paisOrigem"]);
+        $marca1->setValorMercado($_POST["valorMercado"]);
 
-        $marca->insertMarca();
+        $marca1->updateMarca();
+        header("Location: index.php");
     }
 ?>

@@ -121,8 +121,8 @@ class Carro {
         // Prepara o comando SQL
         $sql = "UPDATE carro 
                 SET modelo = '{$this->modelo}', 
-                valor = '{$this->valor},'
-                cor = '{$this->cor},'
+                valor = '{$this->valor}',
+                cor = '{$this->cor}',
                 marca = '{$this->marca}' 
                 WHERE id = '{$this->id}'" ;
 

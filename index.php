@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="container">
-		<h3 class="text-center pt-5 title">Cars information</h3>
+		<h3 class="text-center pt-5 title">SC3009165 - Cars information</h3>
 
 		<br>
 		<a href="carros.php" class="button">
@@ -27,6 +27,9 @@
 		<a href="viewMarcas.php" class="button">
 			<button type="button" class="btn btn-dark btn-lg btn-block">Listar Marcas</button>
 		</a>
+
+		<h5 class="text-center text-danger mt-2"><strong>***Utilização***</strong></h5>
+		<p class="text-center text-danger mt-2"><strong>Antes de excluir alguma marca, verificar se nao existem carros da marca inseridos</strong></p>
 	</div>
 
 </body>

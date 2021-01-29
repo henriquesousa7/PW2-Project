@@ -3,10 +3,8 @@
     require 'Classes/Carro.php'; 
     
     $marca = new Marca();
-    $carro = new Carro();
 
     $allMarcas = $marca->selectAll();
-    $allCarros = $carro->selectAll();
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +37,7 @@
                         </div>
                         <div class="form-group">
                          	<label for="cor">Cor</label>
-                			<input type="text" class="form-control" id="cor" name="cor" placeholder="cor" required>
+                			<input type="text" class="form-control" id="cor" name="cor" placeholder="Cor" required>
                         </div>
                         <div class="form-group">
                             <label for="marcas">Marca</label>
@@ -62,14 +60,14 @@
 
 <?php
 
-    $carro1 = new Carro();
+    $carro = new Carro();
     
     if(isset($_POST['insertButton'])){
-        $carro1->setModelo($_POST["modelo"]);
-        $carro1->setValor($_POST["valor"]);
-        $carro1->setCor($_POST["cor"]);
-        $carro1->setMarca($_POST["marcas"]);
+        $carro->setModelo($_POST["modelo"]);
+        $carro->setValor($_POST["valor"]);
+        $carro->setCor($_POST["cor"]);
+        $carro->setMarca($_POST["marcas"]);
 
-        $carro1->insertCarro();
+        $carro->insertCarro();
     }
 ?>
